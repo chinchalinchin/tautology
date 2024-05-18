@@ -1,4 +1,4 @@
-from .util import _validate_int
+from .util import validate_int
 from .factors import gcd
 
 def squares(n):
@@ -13,7 +13,7 @@ def squares(n):
         TypeError: if ``n`` is not an int
         ValueError: if ``n`` is less than or equal to 0
     """
-    _validate_int(n)
+    validate_int(n)
     
     return [ 
         i*i 
@@ -28,7 +28,13 @@ def gcds(b):
 
     Returns:
         a list ``e`` where each element at index ``i``, ``e[i]``, corresponds to the GCD of that element and ``b``, i.e. gcd(``i``, ``b``) = ``e[i]``, for all values of i = 1, 2, ..., b - 1.
+    
+    Raises:
+        TypeError: if ``n`` is not an int
+        ValueError: if ``n`` is less than or equal to 0
     """
+    validate_int(b)
+
     return [ 
         gcd(i, b) 
         for i 
@@ -53,7 +59,7 @@ def primes(n):
         TypeError: if ``n`` is not an int
         ValueError: if ``n`` is less than or equal to 0
     """
-    _validate_int(n)
+    validate_int(n)
 
     sqs = squares(n) 
     sieve = {
@@ -76,6 +82,21 @@ def primes(n):
     ]
 
 def pseudoprimes(x):
+    """
+    Generates a list of pseudoprimes up to ``n``.
+
+    Arguments:
+        n (int): arbitrary integer
+
+    Returns:
+        A list of pseudoprimes up to the values of ``n``
+
+    Raises:
+        TypeError: if ``n`` is not an int
+        ValueError: if ``n`` is less than or equal to 0
+    """
+    validate_int(x)
+    
     pseudos = []
 
     for i in range(1,x):

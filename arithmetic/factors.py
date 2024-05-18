@@ -1,4 +1,4 @@
-from .util import _validate_int
+from .util import validate_int
 
 def gcd(a, b, checked = False):
     """
@@ -15,8 +15,8 @@ def gcd(a, b, checked = False):
     """
 
     if not checked:
-        _validate_int(a)
-        _validate_int(b)
+        validate_int(a)
+        validate_int(b)
 
     if a == b:
         return a
