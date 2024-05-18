@@ -30,6 +30,7 @@ def primes(n):
     }
 
     # NOTE: len(sqs) + 2 gives the next closest root of a perfect square
+    #           (because range(i, n) gives [i, i+1, ..., n - 2, n - 1])
     for i in range(2, len(sqs) + 2):
         if sieve[i]:
             for j in range(1+1, n // i + 1):
