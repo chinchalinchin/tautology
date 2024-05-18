@@ -15,13 +15,15 @@ def squares(n):
 
 def primes(n):
     """
+    Generates a list of primes up to ``n`` using the Sieve of Erastothenes.
+
     Arguments:
         n (int): arbitrary integer
 
     Returns:
         A list of primes up to the values of ``n``
     """
-    sqs = squares(n)
+    sqs = squares(n) 
     sieve = {
         x: True
         for x in range(2,n+1)
