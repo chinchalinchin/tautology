@@ -1,4 +1,4 @@
-from util import _validate_int
+from .util import _validate_int
 
 def gcd(a, b, checked = False):
     """

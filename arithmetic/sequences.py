@@ -1,9 +1,10 @@
-from util import _validate_int
+from .util import _validate_int
+from .factors import gcd
 
 def squares(n):
     """
     Arguments:
-        n (int): arbitray integer
+        n (int): arbitrary integer
         
     Returns:
         a list of squares up to the value of ``n``.
@@ -18,6 +19,24 @@ def squares(n):
         i*i 
         for i in range(1, n+1) 
         if i*i < n 
+    ]
+
+def gcds(b):
+    """
+    Arguments:
+        b (int): arbitrary integer
+
+    Returns:
+        a list ``e`` where each element at index ``i``, ``e[i]``, corresponds to the GCD of that element and ``b``, i.e. gcd(``i``, ``b``) = ``e[i]``, for all values of i = 1, 2, ..., b - 1.
+    """
+    return [ 
+        gcd(i, b) 
+        for i 
+        in [ 
+            i 
+            for i 
+            in range(1, b) 
+        ]
     ]
 
 def primes(n):
@@ -55,3 +74,21 @@ def primes(n):
         in sieve.items() 
         if v 
     ]
+
+def pseudoprimes(x):
+    pseudos = []
+
+    for i in range(1,x):
+        rel_primes = [ 
+            j + 1 
+            for j, p 
+            in enumerate(
+                gcds(i)
+            ) 
+            if p == 1 
+        ]
+
+        if len(rel_primes) == i -1:
+            pseudos.append(i)
+
+    return pseudos
