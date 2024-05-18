@@ -1,3 +1,5 @@
+from util import _validate_int
+
 def squares(n):
     """
     Arguments:
@@ -5,8 +7,13 @@ def squares(n):
         
     Returns:
         a list of squares up to the value of ``n``.
-    """
 
+    Raises:
+        TypeError: if ``n`` is not an int
+        ValueError: if ``n`` is less than or equal to 0
+    """
+    _validate_int(n)
+    
     return [ 
         i*i 
         for i in range(1, n+1) 
@@ -22,7 +29,13 @@ def primes(n):
 
     Returns:
         A list of primes up to the values of ``n``
+
+    Raises:
+        TypeError: if ``n`` is not an int
+        ValueError: if ``n`` is less than or equal to 0
     """
+    _validate_int(n)
+
     sqs = squares(n) 
     sieve = {
         x: True
