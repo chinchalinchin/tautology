@@ -1,4 +1,4 @@
-def _squares(n):
+def squares(n):
     """
     Arguments:
         n (int): arbitray integer
@@ -21,7 +21,7 @@ def primes(n):
     Returns:
         A list of primes up to the values of ``n``
     """
-    sqs = _squares(n)
+    sqs = squares(n)
     sieve = {
         x: True
         for x in range(2,n+1)
@@ -33,7 +33,9 @@ def primes(n):
             for j in range(1+1, n // i + 1):
                 sieve[i*j] = False
 
-    return [ k for k,v in sieve.items() if v ]
-
-if __name__== "__main__":
-    print(primes(300))
+    return [ 
+        k 
+        for k,v 
+        in sieve.items() 
+        if v 
+    ]
